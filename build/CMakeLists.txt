@@ -109,6 +109,21 @@ set ( XLUA_CORE
     xlua.c
 )
 
+#begin lua-sqlite3
+	set (SQLITE3_SRC 
+		lsqlite3/lsqlite3.c
+		lsqlite3/sqlite3.c
+		)
+	set_property(
+		SOURCE ${SQLITE3_SRC}
+		APPEND
+		PROPERTY COMPILE_DEFINITIONS
+		LUA_LIB
+	)
+	list(APPEND THIRDPART_INC  lsqlite3)
+	set (THIRDPART_SRC ${THIRDPART_SRC} ${SQLITE3_SRC})
+#end lua-rapidjson
+
 if (NOT USING_LUAJIT)
     list (APPEND XLUA_CORE memory_leak_checker.c)
 endif ( )
