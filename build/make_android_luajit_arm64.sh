@@ -1,5 +1,5 @@
 if [ -z "$ANDROID_NDK" ]; then
-    export ANDROID_NDK=~/workspace/env/android-ndk-r15c
+    export ANDROID_NDK=~/workspace/env/android-ndk-r10e
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -61,7 +61,7 @@ make HOST_CC="gcc -m64" CROSS=$NDKP TARGET_SYS=Linux TARGET_FLAGS="$NDKF $NDKARC
 
 cd "$DIR"
 mkdir -p build_lj_v8a && cd build_lj_v8a
-cmake -DUSING_LUAJIT=ON -DANDROID_ABI=arm64-v8a -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=arm-linux-androideabi-4.9 -DANDROID_NATIVE_API_LEVEL=android-9 ../
+cmake -DUSING_LUAJIT=ON -DANDROID_ABI=arm64-v8a -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=aarch64-linux-android-4.9 -DANDROID_NATIVE_API_LEVEL=android-9 ../
 cd "$DIR"
 cmake --build build_lj_v8a --config Release
 mkdir -p plugin_luajit/Plugins/Android/libs/arm64-v8a/
